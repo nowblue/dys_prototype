@@ -1,0 +1,790 @@
+@charset "UTF-8";
+/*index.html에 선언된 스타일시트*/
+
+:root {
+    --ti-cursor-font-weight: .5px;
+    --ti-cursor-transform: translateX(-1.5rem);
+    --ti-cursor-color: rgba(0, 0, 0, .6);
+    --ti-cursor-line-height: 5px;
+    --ti-cursor-height: 5px;
+
+    /*공통수치 통합관리*/
+    --union-line-height: 1.35;
+
+    /*컬러 관리*/
+    --background: #ffffff;
+    /* --systemColor: #ffffff; */
+    /* --systemColorD: rgba(0, 0, 0, 0.85);
+    --systemColorLD: rgba(0, 0, 0, .6);
+    --sectorTitleColor: rgba(255, 255, 255, 0.8); */
+    --ivory: #FFFFF3;
+    --Gray:#DADADA;
+    --purpleGy: #E7E2FF;
+    --purpleGy2: #A8A8BF;
+    --purpleA: #F6F5F9;
+    --purpleB: #EBEBF8;
+    --purpleC: #7C7895;
+    --purpleMain: #875CFF;
+    --purpleD: #A483FF;
+    --purpleE: #BEA7FF;
+    --purpleF: #E0D5FF;
+    --purpleG: #FAFAFF;
+    --navy: #1B1233;
+
+    --text-xlarge: 3vw; /* 6.000vw * 0.5625 */
+    --text-large: 1.8vw; /* 4.650vw * 0.5625 */
+    --text-medium: 1.3vw; 
+    --text-regular: 1.1vw; 
+    --text-semi-medium: 1vw;
+    --text-small: 0.9vw; 
+    --text-semi-small: 0.8vw;
+    --text-extra-small: 0.75vw; 
+   --text-tiny: 0.7vw;
+}
+
+
+*{
+    font-family:'Rubik', 'SUITE', 'sans-serif';
+    margin: 0;
+}
+
+.wrap{
+    position: relative;
+    margin-left: 4vw;
+}
+
+::-webkit-scrollbar {
+    /* display: none; */
+    width: 0.5vw;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/********************************navigation***************************/
+
+
+.layout {
+    /* position: relative; */
+    position: static !important;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 4vw;
+    height: 100vh;
+    background-color: #F6F5F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar:hover{
+    background-color: var(--purpleB);
+}
+
+/*아래 3개는 호버할 경우 커지게 하는 건데,,,, 굳이 안 넣으려면 빼도 됨*/
+.sidebar img,
+.mypageIcon {
+    transition: transform 0.2s ease;
+}
+
+.sidebar img:hover,
+.mypageIcon:hover {
+    transform: scale(1.12);
+}
+
+.logo_ul img:hover {
+    transform: none;
+}
+
+.nav_ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar li {
+    margin: 1vw 0;
+}
+
+.logo_ul{
+    margin-top: .7vw;
+}
+
+.nav_tab {
+    padding: .5vw 0;
+}
+
+/* 아래 고정 역할 */
+.nav_ul3 {
+    margin-top: auto;   /* flex 기준 맨 아래로 밀어내기 */
+    padding-bottom: 1vw;
+}
+
+.nav_ul3 button{
+    border: none;
+    margin: 1vw 0;
+}
+
+/* 마이페이지 아이콘 */
+.mypageIcon {
+    position: fixed;   /* layout-relative 대신 화면 규칙 적용 */
+    top: 1.5vw;
+    right: 2.3vw;
+    width: 2vw;
+    z-index: 20;
+}
+
+
+
+/*설정 박스*/
+/* 뭔가 오류가 있음... 확인 후 수정 예정 */
+/* div #settingsBox .settings-box{
+    left: 10vw;
+    bottom: 10vw;
+    display: block;
+} */
+
+.settings-box {
+    position: fixed;
+    bottom: auto;
+    top: auto;
+    left: auto; /* sidebar 오른쪽 옆에 붙게 */
+    width: 10vw;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 0.8vw;
+    border-radius: 0.5vw;
+    box-shadow: 0 0.5vw 1vw rgba(0,0,0,0.1);
+    display: none;
+    /* z-index: 99999999; */
+    z-index:10;
+}
+
+.settings-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.settings-box li {
+    padding: 0.5vw 0;
+    font-size: 0.9vw;
+    cursor: pointer;
+}
+
+.settings-box li:hover {
+    background: #f3f3f3;
+}
+
+
+
+
+
+/***********************index****************************/
+
+
+main {
+    display: inline-flex;
+    width: 87vw;
+    padding: 5vw 6vw 0 6vw;
+    /* height: 60vw; */
+    position: fixed;
+    background: var(--background);
+    z-index: 1;
+    flex-direction: column;
+    align-items: center;
+    z-index: 0;
+}
+
+.upload_logo{
+    display: inline-flex;
+    width: 8vw;
+}
+
+.uploadBox{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 4vw;
+    /* padding: 4.5vw 0 4vw 0; */
+    width: 43vw;
+    height: 20.5vw;
+    border-radius: 2vw;
+    border: 0.11vw #d1d1d1 dashed;
+    transition: border 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    transform: scale(1);
+    /* background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
+    background-position: bottom; 
+    background-size: 7px 2px;/*점선 간격 수정
+    background-repeat: repeat-x; */
+}
+
+.uploadBox:hover{
+    border: 0.11vw var(--purpleMain) dashed;
+    /* box-shadow: 0 0 2vw var(--purpleMain); */
+    box-shadow: 0 0 2vw #F0EBFF;
+    transform: scale(1.005);
+}
+
+.upload_input{
+    position: relative;
+    margin: -19.5vw 0 0 0;
+    padding: 4.5vw 0 3vw 0;
+    width: 43vw;
+    height: 13vw;
+    border-radius: 2vw;
+    text-align: center;
+    /* display: none; */
+    overflow:hidden;
+    color: transparent; /* 기본 텍스트 숨김 */
+}
+
+
+.upload_input::file-selector-button{
+    display: none;
+}
+
+.UBox_wrap{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5vw 0 4vw 0;
+}
+
+.U_icon{
+    width: 1.8vw;
+}
+
+.U_message{
+    margin: 1.9vw 0 1.5vw 0;
+    color: var(--purpleMain);
+    font-weight: 700;
+    /* font-size: var(--text-semi-medium); */
+    font-size: 1vw;
+}
+
+.U_message2{
+    text-align: center;
+    color: var(--purpleGy2);
+    font-size: var(--text-semi-small);
+    line-height: 1.8vw;
+}
+
+
+
+/***************************************프롬포트************************************/
+
+/* .prompt_box{
+    width: 30vw;
+    height: 10vw;
+    background-color: var(--purpleC);
+} */
+
+.prompt{
+    width: 56vw;
+    height: 10vw;
+    padding: 2vw;
+    /* color: var(--purpleC); */
+    color: #7C7895;
+    /* background-color: var(--purpleB); */
+    background-color: #EBEBF8;
+    border: none;
+    border-radius: 1.6vw;
+    /* font-size: var(--text-small); */
+    font-size: 0.9vw;
+    /* 아래는 박스 크기를 임의로 사용자가 수정할 수 있게 하는 건데, 그걸 막는 코드입니다. */
+    resize: none;
+    z-index: 3;
+}
+
+.prompt::placeholder{
+    color: #aaa;
+    margin-top: 0;
+}
+
+.prompt:focus{
+    outline: none;
+}
+
+.send_btn{
+    position: absolute;
+    background-color: var(--purpleGy2);
+    margin: 1.2vw 0 0 -3.2vw;
+    width: 2vw;
+    height: 2vw;
+    border: none;
+    border-radius: 3vw;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.send_btn img{
+    width: .6vw;
+}
+
+.recommand{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    margin: 10vw 0 0 -58vw;
+}
+
+.reco{
+    /* width: 5vw; */
+    width: fit-content;
+    padding: .7vw 1.5vw;
+    margin-right: .8vw;
+    background-color: var(--background);
+    color: var(--purpleGy2);
+    font-size: var(--text-extra-small);
+    border: none;
+    border-radius: .7vw;
+}
+
+.reco:hover{
+    background-color: var(--purpleMain);
+    color: var(--background);
+}
+
+
+
+
+/*************************분석 페이지******************************/
+.Report_main {
+    display: inline-flex;
+    width: 87vw;
+    padding: 4vw 4vw 0 4vw;
+    /* height: 60vw; */
+    position: fixed;
+    background: var(--background);
+    z-index: 1;
+    flex-direction: column;
+    align-items: center;
+    z-index: 0;
+}
+
+.promptArraw{
+    position: absolute;
+    top: 2vw;
+    width: 1.3vw;
+}
+
+.H1Text{
+    font-size: var(--text-regular);
+    margin-bottom: 2vw;
+    color: var(--purpleC);
+    font-weight: 600;
+}
+
+.main_percent{
+    /* margin-top: 1.6vw; */
+    height: 4vw;
+    margin-left: 1vw;
+    width: 86vw;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: flex-end;
+    /* padding: 0px 1vw; */
+    background: var(--background);
+    border-radius: 2vw;
+}
+
+.main_percent span{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-semi-small);
+    font-weight: 400;
+}
+
+.main_percent .per{
+    height: 4vw;
+    width: 50%;
+    background: var(--purpleMain);
+    border-top-left-radius: 2vw;
+    border-bottom-left-radius: 2vw;
+    color: var(--background);
+}
+
+.main_percent .per2{
+    height: 4vw;
+    width: 25%;
+    background: var(--purpleD);
+}
+
+.main_percent .per3{
+    height: 4vw;
+    width: 15%;
+    background: var(--purpleE);
+}
+
+.main_percent .per4{
+    height: 4vw;
+    width: 10%;
+    background: var(--purpleF);
+    border-top-right-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+}
+
+/* 살려줘............. */
+
+.dataBox_wrap{
+    margin-top: .3vw;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.dataBox{
+    width: 26vw;
+    height: 12vw;
+    padding: 1vw;
+    margin: .8vw 0 0 .8vw;
+    background: var(--background);
+    border: .09vw solid var(--purpleB);
+    border-radius: 2vw;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.H3Text{
+    font-size: var(--text-semi-small);
+    font-weight: 500;
+    padding: .5vw .5vw .5vw 1vw;
+}
+
+.dataElement{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 7.3vw;
+    width: 25vw;
+    margin: 0 auto;
+}
+
+.dataElement .colorlayout{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 13vw;
+}
+
+.dataElement span{
+    margin: .3vw 0 0 .3vw;
+    color: var(--background);
+    display: inline-flex;
+    align-items: flex-end;
+}
+
+.dataElement .color1{
+    width: 11.4vw;
+    height: 6.1vw;
+    background-color: #9FBAF1;
+    border-radius: .8vw;
+    margin: .3vw 0 0 .3vw;
+    padding: 0 0 .7vw .7vw;
+    font-size: var(--text-small);
+}
+
+.dataElement .color2{
+    width: 11.4vw;
+    height: 2.6vw;
+    background-color: #CBCBE7;
+    border-radius: .6vw;
+    padding: 0 0 .7vw .7vw;
+    font-size: var(--text-tiny);
+}
+
+.dataElement .color3{
+    width: 5.2vw;
+    height: 2.6vw;
+    background-color: #EAF3B2;
+    border-radius: .6vw;
+    padding: 0 0 .7vw .7vw;
+    color: #010101;
+    font-size: var(--text-tiny);
+}
+
+.dataElement .color4{
+    width: 5.2vw;
+    height: 2.6vw;
+    background-color: #595880;
+    border-radius: .6vw;
+    padding: 0 0 .7vw .7vw;
+    font-size: var(--text-tiny);
+}
+
+.describtion{
+    margin: 1vw 0 0 1vw;
+    font-size: var(--text-tiny);
+}
+
+.eleText{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--text-extra-small);
+    background: var(--purpleG);
+    border: .08vw solid var(--purpleB);
+    border-radius: .6vw;
+    width: 31%;
+    height: 40%;
+    margin-top: .3vw;
+    margin-right: .7vw;
+}
+
+.eleText:last-child{
+    margin-right: 0;
+}
+
+.suggestionBox{
+    display: inline-flex;
+    flex-direction: column;
+    width: 22vw;
+    height: 5.5vw;
+    font-size: var(--text-extra-small);
+    line-height: 1.5vw;
+    padding: .7vw 0 0vw 2vw;
+    background: var(--purpleG);
+    border: .08vw solid var(--purpleB);
+    margin-top: .3vw;
+    margin-left: .8vw;
+    margin-bottom: .6vw;
+    border-radius: 1vw;
+}
+
+.layoutBox{
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.oneEle{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 12vw;
+    margin-top: .7vw;
+    font-size: var(--text-extra-small);
+}
+
+.oneEle .item{
+    width: 3vw;
+    margin-left: .5vw;
+}
+
+.oneEle .value{
+    display: inline-flex;
+    align-items: center;
+    margin-left: .2vw;
+    padding-left: .7vw;
+    width: 6.3vw;
+    height: 2.3vw;
+    background: var(--purpleG);
+    border: .08vw solid var(--purpleB);
+    border-radius: .5vw;
+}
+
+.typoData{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textwrap{
+    margin-top: 1vw;
+    width: 24vw;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.textwrap .eng{
+    font-size: var(--text-large);
+}
+
+.textwrap .font{
+    font-size: var(--text-small);
+    font-weight: 300;
+}
+
+.textwrap .font2{
+    font-size: var(--text-extra-small);
+    color:var(--purpleGy2);
+    font-weight: 200;
+}
+
+.dataBox .percent{
+    margin-top: 1vw;
+    width: 25vw;
+    height: .7vw;
+    background: var(--Gray);
+    border-radius: 2vw;
+}
+
+.percent .perInside{
+    margin: 0;
+    width: 83%;
+    height: .7vw;
+    background: var(--purpleMain);
+    border-top-left-radius: 2vw;
+    border-bottom-left-radius: 2vw;
+}
+
+.langData{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start
+
+
+}
+
+.langData .dataElement{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    height: 7.3vw;
+    width: 25vw;
+    margin: 0 auto;
+    font-size: var(--text-extra-small);
+    text-align: center;
+}
+
+.langData .lang{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 6vw;
+    height: 3vw;
+    background: var(--purpleG);
+    border: .08vw solid var(--purpleB);
+    border-radius: .5vw;
+    color: #000000;
+}
+
+.langData .text{
+    display: inline-flex;
+    align-items: center;
+    padding-left: 1vw;
+    width: 16.7vw;
+    height: 3vw;
+    background: var(--purpleG);
+    border: .08vw solid var(--purpleB);
+    border-radius: .5vw;
+    color: #000000;
+}
+
+.aiSuggestion{
+    width: 82vw;
+    /* height: 12vw; */
+    padding: 1vw 2vw 2vw 2vw;
+    margin: .8vw 0 0 .8vw;
+    background: #F9FAFC;
+    border: .09vw solid var(--purpleB);
+    border-radius: 2vw;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.aiSuggestion .star{
+    width: 1vw;
+}
+
+.H2Text{
+    font-size: var(--text-semi-medium);
+    font-weight: 500;
+    padding: .5vw .5vw .5vw 1vw;
+}
+
+.aiDescribtion{
+    padding-top: .5vw;
+    font-size: var(--text-small);
+    line-height: 1.3vw;
+}
+
+.analyze_prompt_box{
+    position: absolute;
+    left: 4vw;
+    top:49vw;
+}
+
+.analyze_prompt{
+    /* position: absolute; */
+    /* left: 4vw;
+    top:49vw; */
+    /* bottom: 2vh; */
+    width: 86vw;
+    padding: 1.5vw 0 .5vw 2vw;    /* color: var(--purpleC); */
+    color: #EBEBF8;
+    /* background-color: var(--purpleB); */
+    background-color: #EBEBF8;
+    border: none;
+    border-radius: 2vw;
+    /* font-size: var(--text-small); */
+    font-size: 0.9vw;
+    /* 아래는 박스 크기를 임의로 사용자가 수정할 수 있게 하는 건데, 그걸 막는 코드입니다. */
+    resize: none;
+    z-index: 3;
+}
+
+.analyze_prompt::placeholder{
+    color: #aaa;
+    margin-top: 0;
+    background: transparent;
+    border: none;
+}
+
+.analyze_prompt:focus{
+    outline: none;
+}
+
+.analyze_send_btn{
+    position: absolute;
+    background-color: var(--purpleGy2);
+    width: 2vw;
+    height: 2vw;
+    right: 1vw;
+    top: 1vw;
+    border: none;
+    border-radius: 3vw;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.analyze_send_btn img{
+    width: .6vw;
+}
