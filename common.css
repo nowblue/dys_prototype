@@ -203,7 +203,7 @@
 main {
     display: inline-flex;
     width: 87vw;
-    padding: 5vw 6vw 0 6vw;
+    padding: 5vw 6vw 0 5vw;
     /* height: 60vw; */
     position: fixed;
     background: var(--background);
